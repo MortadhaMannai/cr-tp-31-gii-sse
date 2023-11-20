@@ -16,13 +16,17 @@
 
 package com.example.android.droidcafeoptions;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * This activity handles radio buttons for choosing a delivery method for an
@@ -89,4 +93,26 @@ public class OrderActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
     }
+    public void showDatePickerDialog(View view) {
+        DatePickerDialog datePickerDialog;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        datePickerDialog = new DatePickerDialog(OrderActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        // Code to handle the selected date
+                        String selectedDate = day + "/" + (month + 1) + "/" + year;
+
+                        // Display the selected date in a Toast message
+                        Toast.makeText(OrderActivity.this, "Selected Date: " + selectedDate,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }, year, month, day);
+        datePickerDialog.show();
+    }
+
 }
