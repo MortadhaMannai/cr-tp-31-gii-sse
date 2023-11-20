@@ -1,4 +1,4 @@
-:DroidCafeOptions - Solution Code
+DroidCafeOptions - Solution Code
 ================================
 
 App that demonstrates images used as buttons and a floating action button
